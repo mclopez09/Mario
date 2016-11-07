@@ -1,42 +1,25 @@
 #Prueba 1
-
 from tkinter import*
-from tkinter import font
-
-
+from tkinter import ttk
+import threading
+import time
+import winsound
 mc= Tk()
 nombres=Toplevel()
-dif1=Toplevel()
-d1 = Canvas(dif1, bg="black", height=655, width=1320).place(x=0,y=0)
-dif2=Toplevel()
-d2 = Canvas(dif2, bg="black", height=655, width=1320).place(x=0,y=0)
-dif3=Toplevel()
-d3 = Canvas(dif3, bg="black", height=655, width=1320).place(x=0,y=0)
-dif4=Toplevel()
-d4 = Canvas(dif4, bg="black", height=655, width=1320).place(x=0,y=0)
-dif5=Toplevel()
-d5 = Canvas(dif5, bg="black", height=655, width=1320).place(x=0,y=0)
-
+dif=Toplevel()
+d = Canvas(dif, bg="black", height=685, width=1123)
+d.place(x=0,y=0)
+##def Play():
+##   a = "smb.wav"
+##   Reproducir= winsound.PlaySound(a,winsound.SND_FILENAME)
 def mostrar(nombres): nombres.deiconify()
 def ocultar(mc): mc.withdraw()
 def ejecutar(f): mc.after(200,f)
 def printn():
-        jug1=Label(dif1,text=jug01.get(),font=("Arcade",32),bg='black',fg='white').place(x=60,y=30)
-        jug2=Label(dif1,text=jug02.get(),font=("Arcade",32),bg='black',fg='white').place(x=1145,y=30)
-        mvl=Label(dif1,text='Mario VS Luigi',font=("Arcade",40),bg='black',fg='white').place(x=480,y=25)
-        jug1=Label(dif2,text=jug01.get(),font=("Arcade",32),bg='black',fg='white').place(x=60,y=30)
-        jug2=Label(dif2,text=jug02.get(),font=("Arcade",32),bg='black',fg='white').place(x=1145,y=30)
-        mvl=Label(dif2,text='Mario VS Luigi',font=("Arcade",40),bg='black',fg='white').place(x=480,y=25)
-        jug1=Label(dif3,text=jug01.get(),font=("Arcade",32),bg='black',fg='white').place(x=60,y=30)
-        jug2=Label(dif3,text=jug02.get(),font=("Arcade",32),bg='black',fg='white').place(x=1145,y=30)
-        mvl=Label(dif3,text='Mario VS Luigi',font=("Arcade",40),bg='black',fg='white').place(x=470,y=25)
-        jug1=Label(dif4,text=jug01.get(),font=("Arcade",32),bg='black',fg='white').place(x=60,y=30)
-        jug2=Label(dif4,text=jug02.get(),font=("Arcade",32),bg='black',fg='white').place(x=1145,y=30)
-        mvl=Label(dif4,text='Mario VS Luigi',font=("Arcade",40),bg='black',fg='white').place(x=480,y=25)
-        jug1=Label(dif5,text=jug01.get(),font=("Arcade",32),bg='black',fg='white').place(x=60,y=30)
-        jug2=Label(dif5,text=jug02.get(),font=("Arcade",32),bg='black',fg='white').place(x=1145,y=30)
-        mvl=Label(dif5,text='Mario VS Luigi',font=("Arcade",40),bg='black',fg='white').place(x=480,y=25)
-#carateristicas ventana principal
+        jug1=Label(dif,text=jug01.get(),font=("Arcade",32),bg='black',fg='white').place(x=60,y=30)
+        jug2=Label(dif,text=jug02.get(),font=("Arcade",32),bg='black',fg='white').place(x=925,y=30)
+        mvl=Label(dif,text='Mario VS Luigi',font=("Arcade",40),bg='black',fg='white').place(x=405,y=25)
+#Ventana principal
 mc.geometry('900x600+220+50')
 mc.configure(bg = 'black')
 mc.title('Super Mario Proyecto MCL')
@@ -57,46 +40,116 @@ jug02=StringVar()
 txtnom2=Entry(nombres,textvariable=jug02).place(x=310,y=125)#nombre jugadores2
 nombres.title('Nombre de los jugadores')
 nombres.resizable(0,0)
-##Imagenes jugadores
+##Imagenes
 mjug1=PhotoImage(file="mariojug1.gif")
 ljug2=PhotoImage(file="luigijug2.gif")
+Fondojue=PhotoImage(file="Fondo.gif")
+marioder=PhotoImage(file="marioDER.png")
+marioiz=PhotoImage(file="mario2iz.png")
+marioup=PhotoImage(file="MarioSALT2DER.png")
+marioupiz=PhotoImage(file="MarioSAL2iz.png")
 #dificultades carac...
-dif1.geometry('1320x655+15+15')
-dif1.title('Juego Super Mario-Dificultad 1')
-picm=Label(dif1,image=mjug1,bd=0).place(x=5,y=10)
-picl=Label(dif1,image=ljug2,bd=0).place(x=1265,y=10)
-##
-dif2.geometry('1320x655+15+15')
-dif2.title('Juego Super Mario-Dificultad 2')
-picm=Label(dif2,image=mjug1,bd=0).place(x=5,y=10)
-picl=Label(dif2,image=ljug2,bd=0).place(x=1265,y=10)
-##
-dif3.geometry('1320x655+15+15')
-dif3.title('Juego Super Mario-Dificultad 3')
-picm=Label(dif3,image=mjug1,bd=0).place(x=4,y=10)
-picl=Label(dif3,image=ljug2,bd=0).place(x=1265,y=10)
-##
-dif4.geometry('1320x655+15+15')
-dif4.title('Juego Super Mario-Dificultad 4')
-picm=Label(dif4,image=mjug1,bd=0).place(x=5,y=10)
-picl=Label(dif4,image=ljug2,bd=0).place(x=1265,y=10)
-##
-dif5.geometry('1320x655+15+15')
-dif5.title('Juego Super Mario-Dificultad 5')
-picm=Label(dif5,image=mjug1,bd=0).place(x=5,y=10)
-picl=Label(dif5,image=ljug2,bd=0).place(x=1265,y=10)
-
+dif.geometry('1123x685+110+8')
+dif.title('Juego Super Mario')
+picm=Label(dif,image=mjug1,bd=0).place(x=5,y=10)
+picl=Label(dif,image=ljug2,bd=0).place(x=1068,y=10)
+d.create_image(0,115,image=Fondojue, anchor= NW)
+##posicion inical
+posx=160
+posy=560
+m=d.create_image(posx,posy,image=marioder, anchor= NW)
+dif.resizable(0,0)
+#plataformas
+posy1PLAT1=272
+posy2PLAT1=298
+pabajo1= d.create_rectangle(1,496, 340, 521, fill= None)
+pabajo2= d.create_rectangle(779, 496, 1123, 521, fill=None)
+pmedio1= d.create_rectangle(1,412, 196, 386, fill=None)
+pmedio2= d.create_rectangle(403,412,718,386,fill= None)
+pmedio3= d.create_rectangle(923,412,1123,386, fill=None)
+parriba1= d.create_rectangle(1,posy1PLAT1, 368, posy2PLAT1, fill= None)
+parriba2= d.create_rectangle(749, posy1PLAT1, 1123,posy2PLAT1, fill=None)
+#Ocultar ventanas
 nombres.withdraw()
-dif1.withdraw()
-dif2.withdraw()
-dif3.withdraw()
-dif4.withdraw()
-dif5.withdraw()
+dif.withdraw()
+#Botones
 btn= font.Font(family="Verdana", size=15)
 entrada = Button(mc,text="Empezar",cursor="hand2",bg='orange',font= btn,command=lambda: ejecutar(mostrar(nombres)) or (ocultar(mc)),activeforeground="white",bd=10).place(x=410, y=390)#boton ventana principal
-nivel1dif = Button(nombres,text="Nivel 1",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif1)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=75,y=250)#boton dificultad 1
-nivel2dif = Button(nombres,text="Nivel 2",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif2)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=150,y=250)#2
-nivel3dif = Button(nombres,text="Nivel 3",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif3)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=225,y=250)#3
-nivel4dif = Button(nombres,text="Nivel 4",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif4)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=300,y=250)#4
-nivel5dif = Button(nombres,text="Nivel 5",cursor="pirate",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif5)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=375,y=250)#5
+nivel1dif = Button(nombres,text="Nivel 1",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif)) or (ocultar(nombres))or printn() ,activeforeground="#F50743").place(x=75,y=250)#boton dificultad 1
+nivel2dif = Button(nombres,text="Nivel 2",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=150,y=250)#2
+nivel3dif = Button(nombres,text="Nivel 3",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=225,y=250)#3
+nivel4dif = Button(nombres,text="Nivel 4",cursor="hand2",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=300,y=250)#4
+nivel5dif = Button(nombres,text="Nivel 5",cursor="pirate",bg='blue', fg='white',command=lambda: ejecutar(mostrar(dif)) or (ocultar(nombres))or printn(),activeforeground="#F50743").place(x=375,y=250)#5
+#Variables
+Estado1='rg'
+s=False
+def move(event):
+        global posx,posy,m,s,Estado1
+        tecla = repr(event.char)
+        if (tecla == "'a'" or tecla=="'A'"):
+                d.delete(m)
+                posx-=12
+                Estado1= 'iz'
+                m=d.create_image(posx,posy,image=marioiz, anchor= NW)
+                if posx < 0 :
+                        posx = 1100        
+        if (tecla == "'d'" or tecla== "'D'"):
+                d.delete(m)
+                posx+=12
+                Estado= 'rg'
+                m=d.create_image(posx,posy,image=marioder, anchor= NW)
+                if posx > 1123 :
+                        posx = 10
+        if ((tecla == "'w'" or tecla== "'W'")and s==False):
+                s=True
+                saltar()
+def saltar(y=0):
+        global posx,posy,m,s,Estado1
+        if(s==True) and (Estado1=='rg'):
+                 if(y<=130):
+                         posy-=11
+                         d.delete(m)
+                         m=d.create_image(posx,posy,image=marioup, anchor= NW)
+                         d.update()
+                         if d.coords(m)>d.coords(pabajo1):
+                                 posy=(posy1PLAT1+2)
+                                 d.delete(m)
+                                 m=d.create_image(posx,posy,image=marioder, anchor= NW)
+                        
+                 if(y>=130):
+                         posy+=11
+                         d.delete(m)
+                         m=d.create_image(posx,posy,image=marioder, anchor= NW)
+                         d.update()
+                
+                 y+=10
+                 print(y)
+                 if(y<=260):
+                        mc.after(10,saltar(y))
+                 else:
+                        s=False    
+        elif (s==True) or (Estado1=='lf'):
+                 if(y<=130):
+                         posy-=11
+                         d.delete(m)
+                         m=d.create_image(posx,posy,image=marioupiz, anchor= NW)
+                         d.update()
+
+                 if(y>=130):
+                         posy+=11
+                         d.delete(m)
+                         m=d.create_image(posx,posy,image=marioiz, anchor= NW)
+                         d.update()
+                 y+=10
+                 print(y)
+                 if(y<=260):
+                        mc.after(10,saltar(y))
+                 else:
+                        s=False
+                        Estado1='rg'
+    
+d.focus_set()
+d.bind("<Key>",move)
+d.mainloop()
 mc.mainloop()
+
